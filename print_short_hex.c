@@ -1,17 +1,18 @@
-#include "main.h"
+nclude "main.h"
+
 /**
- * prinlhex - prints a long decimal in hexadecimal
+ * prinhhex - prints a short decimal in hexadecimal
  * @arguments: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed
  */
-int prinlhex(va_list arguments, char *buf, unsigned int ibuf)
+int prinhhex(va_list arguments, char *buf, unsigned int ibuf)
 {
-	long int int_input, i, isnegative, count, first_digit;
+	short int int_input, i, isnegative, count, first_digit;
 	char *hexadecimal, *binary;
 
-	int_input = va_arg(arguments, long int);
+	int_input = va_arg(arguments, int);
 	isnegative = 0;
 	if (int_input == 0)
 	{
@@ -24,10 +25,10 @@ int prinlhex(va_list arguments, char *buf, unsigned int ibuf)
 		isnegative = 1;
 	}
 
-	binary = malloc(sizeof(char) * (64 + 1));
-	binary = fill_binary_array(binary, int_input, isnegative, 64);
-	hexadecimal = malloc(sizeof(char) * (16 + 1));
-	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 16);
+	binary = malloc(sizeof(char) * (16 + 1));
+	binary = fill_binary_array(binary, int_input, isnegative, 16);
+	hexadecimal = malloc(sizeof(char) * (4 + 1));
+	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 4);
 	for (first_digit = i = count = 0; hexadecimal[i]; i++)
 	{
 		if (hexadecimal[i] != '0' && first_digit == 0)
